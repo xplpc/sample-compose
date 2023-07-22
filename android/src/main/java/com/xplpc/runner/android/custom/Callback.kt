@@ -1,4 +1,4 @@
-package com.xplpc.runner.custom
+package com.xplpc.runner.android.custom
 
 import android.content.Context.BATTERY_SERVICE
 import android.os.BatteryManager

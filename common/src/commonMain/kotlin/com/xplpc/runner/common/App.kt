@@ -1,22 +1,25 @@
 package com.xplpc.runner.common
 
-import androidx.compose.material.Text
 import androidx.compose.material.Button
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.Text
+import androidx.compose.runtime.*
+import kotlinx.coroutines.launch
 
 
 @Composable
-fun App(/* aqui */) {
-    var text by remember { mutableStateOf("Hello, World!") }
-    val platformName = getPlatformName()
+fun App(onGetBatteryLevel: ((String?) -> Unit) -> Unit = {}) {
+    val scope = rememberCoroutineScope()
+
+    var loginText by remember { mutableStateOf("Press Button To Execute") }
 
     Button(onClick = {
-        text = "Hello, $platformName"
+        onGetBatteryLevel { response ->
+            scope.launch {
+                // TODO: use common resources to format string
+                loginText = "Battery Level: $response"
+            }
+        }
     }) {
-        Text(text)
+        Text(loginText)
     }
 }

@@ -10,14 +10,14 @@ version = "1.0-SNAPSHOT"
 repositories {
     google()
     mavenCentral()
-    flatDir { dirs("libs") }
+    flatDir { dirs("../common/src/androidMain/libs") }
 }
 
 dependencies {
     // TODO: when in xplpc
     //implementation(project(":xplpc"))
 
-    implementation(files("libs/library-release.aar"))
+    implementation(files("../common/src/androidMain/libs/library-release.aar"))
     implementation("com.google.code.gson:gson:2.10")
 
     implementation(project(":common"))
@@ -35,6 +35,10 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0-SNAPSHOT"
+
+        ndk {
+            debugSymbolLevel = "full"
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

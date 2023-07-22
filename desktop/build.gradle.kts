@@ -18,7 +18,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(project(":common"))
-                implementation(files("libs/library-release.aar"))
+                implementation(files("../common/src/desktopMain/libs/library-release.aar"))
                 implementation(compose.desktop.currentOs)
             }
         }

@@ -31,6 +31,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 api(compose.preview)
+                implementation(files("src/desktopMain/libs/library-release.aar"))
             }
         }
     }
@@ -46,5 +47,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    dependencies {
+        implementation(files("src/androidMain/libs/library-release.aar"))
     }
 }
